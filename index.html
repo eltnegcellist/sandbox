@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#fff7ef">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Baby Roulette">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icon.svg">
+<title>Baby Expression Roulette</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div>
+    <h1>Baby Expression Roulette</h1>
+    <p class="lead">動画から表情の違うコマを選び、ルーレットやおみくじで遊べます。</p>
+  </div>
+  <button id="installHelp" class="install">iPhoneで使う</button>
+</header>
+
+<section class="card">
+  <div class="step">CREATE</div>
+  <h2>新しいルーレットを作る</h2>
+  <div class="filebox">
+    <input id="fileInput" type="file" accept="video/*">
+    <div class="row">
+      <label>抽出枚数</label>
+      <select id="frameCount">
+        <option>8</option><option>10</option><option>12</option>
+        <option selected>14</option><option>16</option><option>18</option><option>20</option>
+      </select>
+      <button id="extractBtn" class="primary" disabled>表情を選ぶ</button>
+    </div>
+    <div class="note">処理はブラウザ内だけで行います。元動画はサーバーへ送信しません。</div>
+  </div>
+  <div id="progressWrap">
+    <div class="progress"><div id="progressBar"></div></div>
+    <div id="progressText">準備中...</div>
+  </div>
+</section>
+
+<section id="previewSection" class="card" style="display:none">
+  <div class="step">PREVIEW</div>
+  <h2>選ばれたコマ</h2>
+  <div id="grid" class="grid"></div>
+
+  <div class="modeGrid">
+    <button class="mode active" data-mode="omikuji"><b>🎴 おみくじ</b><small>運勢・効果音・大吉演出つき</small></button>
+    <button class="mode" data-mode="roulette"><b>🎞️ 表情ルーレット</b><small>止まった瞬間の表情を楽しむ</small></button>
+  </div>
+
+  <div class="row" style="margin-top:13px">
+    <input id="titleInput" value="赤ちゃんルーレット" style="flex:1;min-width:170px;padding:11px 12px;border:1px solid #d9cec8;border-radius:12px">
+    <button id="playBtn" class="primary">この内容で遊ぶ</button>
+    <button id="saveBtn" class="secondary">端末に保存</button>
+  </div>
+</section>
+
+<section class="card">
+  <div class="step">SAVED</div>
+  <h2>保存したルーレット</h2>
+  <div id="library"><div class="note">まだ保存されていません。</div></div>
+</section>
+
+<section id="playSection" class="card">
+  <div class="step">PLAY</div>
+  <div class="playShell">
+    <div id="stage">
+      <img id="playImage" alt="">
+      <div id="fortuneBadge"></div>
+      <div id="resultCard">
+        <div id="resultHead">きょうの運勢</div>
+        <div id="resultText"></div>
+        <div id="message"></div>
+      </div>
+      <div id="rouletteBadge">タップでストップ</div>
+    </div>
+  </div>
+  <div id="tapHint">画像をタップすると止まります</div>
+  <div class="row" style="justify-content:center;margin-top:12px">
+    <button id="backBtn" class="secondary">戻る</button>
+  </div>
+</section>
+
+<video id="video" playsinline muted preload="metadata" style="display:none"></video>
+<canvas id="captureCanvas" style="display:none"></canvas>
+<canvas id="smallCanvas" width="28" height="28" style="display:none"></canvas>
+
+</div>
+
+<div id="startOverlay">
+  <div class="startCard">
+    <h3 id="startTitle">赤ちゃんおみくじ</h3>
+    <p>最初に1回だけスタートを押してください。<br>この操作で効果音を有効にしてから始めます。</p>
+    <button id="primeBtn">▶ タップしてスタート</button>
+  </div>
+</div>
+<div id="bigOverlay"><div id="bigText">大吉！</div></div>
+
+<script src="./app.js" defer></script>
+</body>
+</html>
