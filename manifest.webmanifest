@@ -1,0 +1,15 @@
+{
+  "name": "Baby Expression Roulette",
+  "short_name": "Baby Roulette",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fff7ef",
+  "theme_color": "#fff7ef",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
