@@ -1,0 +1,76 @@
+:root{
+  --ink:#352720;--muted:#79675e;--paper:#fffdfa;--line:#eadfd8;
+  --pink:#e96e8b;--orange:#ffad65;--red:#a80018;--gold:#e7bd4d;
+  --shadow:0 14px 42px rgba(62,35,25,.14)
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#fff8f1,#fff 58%,#fff7ef);color:var(--ink)}
+body{padding:max(15px,env(safe-area-inset-top)) 14px max(24px,env(safe-area-inset-bottom))}
+button,input,select{font:inherit}
+button{border:0;cursor:pointer;font-weight:900}
+.wrap{width:min(100%,760px);margin:0 auto}
+header{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin:2px 2px 16px}
+h1{font-size:clamp(27px,7vw,42px);margin:0 0 5px;line-height:1.05}
+.lead{margin:0;color:var(--muted);font-size:13px;line-height:1.55}
+.install{background:#f1e9e4;color:#604b40;border-radius:999px;padding:10px 13px;white-space:nowrap}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:17px;box-shadow:var(--shadow);margin-bottom:15px}
+.step{font-size:11px;letter-spacing:.1em;color:#b54d67;font-weight:1000;margin-bottom:6px}
+h2{margin:0 0 8px;font-size:21px}
+.note{font-size:12px;color:var(--muted);line-height:1.55}
+.filebox{display:grid;gap:12px}
+input[type=file]{width:100%;padding:14px;border:2px dashed #e6c1ca;border-radius:16px;background:#fff8fa}
+.row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+label{font-size:13px;font-weight:900}
+select{padding:10px 12px;border:1px solid #d9cec8;border-radius:12px;background:#fff}
+.primary{background:linear-gradient(135deg,var(--pink),var(--orange));color:#fff;border-radius:999px;padding:13px 18px;box-shadow:0 7px 18px rgba(233,110,139,.26)}
+.secondary{background:#f3ece7;color:#604b40;border-radius:999px;padding:12px 16px}
+.danger{background:#fff0f0;color:#9b2635;border-radius:999px;padding:10px 14px}
+button:disabled{opacity:.42;cursor:not-allowed}
+#progressWrap{display:none;margin-top:12px}
+.progress{height:10px;background:#efe4dd;border-radius:999px;overflow:hidden}
+#progressBar{height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--orange));transition:width .18s}
+#progressText{margin-top:6px;font-size:12px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.thumb{position:relative;aspect-ratio:3/4;border-radius:14px;overflow:hidden;background:#eee;box-shadow:0 4px 12px #0001}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb span{position:absolute;left:5px;bottom:5px;background:#0009;color:#fff;border-radius:999px;padding:3px 6px;font-size:10px}
+.modeGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:13px}
+.mode{padding:15px;border-radius:17px;background:#f8f2ee;border:2px solid transparent;text-align:left}
+.mode.active{border-color:#e5758f;background:#fff5f8}
+.mode b{display:block;font-size:15px;margin-bottom:3px}
+.mode small{color:var(--muted)}
+#library{display:grid;gap:10px}
+.saved{display:flex;gap:10px;align-items:center;background:#f8f3ef;border-radius:16px;padding:9px}
+.saved img{width:62px;height:78px;object-fit:cover;border-radius:11px;background:#ddd}
+.savedMain{min-width:0;flex:1}
+.savedTitle{font-weight:950;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.savedMeta{font-size:11px;color:var(--muted);margin-top:3px}
+.savedBtns{display:flex;gap:6px;margin-top:7px;flex-wrap:wrap}
+.savedBtns button{font-size:12px;padding:7px 10px}
+#playSection{display:none}
+.playShell{background:linear-gradient(180deg,#f3d986,#d8a93c);padding:9px;border-radius:27px;box-shadow:0 18px 44px #0003}
+#stage{position:relative;height:min(68vh,700px);border-radius:20px;overflow:hidden;background:#1e1815;touch-action:manipulation}
+#stage img{width:100%;height:100%;object-fit:contain;display:block}
+#fortuneBadge{position:absolute;left:13px;top:13px;background:#fffffff0;border-radius:17px;padding:9px 13px;font-size:20px;font-weight:1000;box-shadow:0 8px 20px #0003;display:none}
+#resultCard{position:absolute;right:13px;bottom:13px;width:min(65%,240px);background:#fffffff2;color:#3b2718;border-radius:15px;padding:13px;box-shadow:0 10px 22px #0003;display:none}
+#resultHead{font-size:11px;color:#8d0012;text-align:center;font-weight:950}
+#resultText{font-size:31px;text-align:center;font-weight:1000;line-height:1.1;margin:5px 0}
+#message{font-size:12px;line-height:1.45;color:#5e4333}
+#rouletteBadge{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);background:#fffffff0;color:#50382d;border-radius:999px;padding:10px 15px;font-weight:950;box-shadow:0 7px 20px #0004;white-space:nowrap}
+#tapHint{text-align:center;margin:10px 0 0;font-size:13px;font-weight:850;color:#70584c}
+.pulse{animation:pulse .55s infinite alternate}@keyframes pulse{from{filter:brightness(.94)}to{filter:brightness(1.06)}}
+#startOverlay{position:fixed;inset:0;z-index:20000;display:none;align-items:center;justify-content:center;padding:20px;background:linear-gradient(160deg,#f6df9b,#bd1726 60%,#87000f)}
+#startOverlay.show{display:flex}
+.startCard{width:min(90vw,390px);background:#fffdf7;color:#3e2b1c;border-radius:26px;padding:26px 21px;text-align:center;border:3px solid #efcf70;box-shadow:0 20px 48px #0006}
+.startCard h3{font-size:28px;color:#730713;margin:0 0 10px}
+.startCard p{font-size:14px;line-height:1.6;margin:0 0 18px}
+#primeBtn{width:100%;padding:15px;border-radius:16px;background:#b50719;color:#fff;font-size:17px;box-shadow:0 7px 0 #76000d}
+#bigOverlay{position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;pointer-events:none;background:radial-gradient(circle,#fff7b877,#ffd70022 50%,transparent 75%)}
+#bigOverlay.show{display:flex;animation:flash 2.4s ease-out forwards}
+#bigText{font-size:clamp(76px,23vw,165px);font-weight:1000;color:#b40000;text-shadow:0 0 10px #fff,0 0 24px #ffd700,0 0 44px #ffad00}
+#bigOverlay.show #bigText{animation:pop 2.15s cubic-bezier(.17,.89,.32,1.35) forwards}
+.confetti{position:fixed;top:-12vh;z-index:10001;border-radius:3px;pointer-events:none;animation:fall linear forwards}
+@keyframes flash{0%{opacity:0;background:#fff}10%{opacity:1}75%{opacity:1}100%{opacity:0}}
+@keyframes pop{0%{transform:scale(.15) rotate(-8deg);opacity:0}18%{transform:scale(1.28) rotate(4deg);opacity:1}36%{transform:scale(.94) rotate(-2deg)}55%{transform:scale(1.08)}100%{transform:scale(1.04);opacity:0}}
+@keyframes fall{from{transform:translateY(0) rotate(0);opacity:1}to{transform:translateY(120vh) rotate(900deg);opacity:0}}
+@media(max-width:520px){.grid{grid-template-columns:repeat(3,1fr)}.card{padding:14px}.modeGrid{grid-template-columns:1fr}}
